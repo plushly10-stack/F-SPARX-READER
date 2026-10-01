@@ -68,7 +68,81 @@ answerPane.innerHTML = '<strong>Answer:</strong><p id="answerText">No answer yet
 document.body.appendChild(answerPane);
 
 async function queryCohere(question, options, context) {
+    const apiKey = // F* Sparx: Sparx Reader
+// Made by Zin
+// Heavily recommend SenAI for maths
+
+let copiedText = ''; // Store copied text globally
+let lastCheckedTime = 0;
+
+
+const CHECK_INTERVAL = 5000;
+
+
+const overlayButton = document.createElement('button');
+overlayButton.textContent = "ANSWER";
+overlayButton.style.position = 'fixed';
+overlayButton.style.bottom = '10px';
+overlayButton.style.right = '10px';
+overlayButton.style.zIndex = '9999';
+overlayButton.style.padding = '10px 20px';
+overlayButton.style.backgroundColor = '#007BFF';
+overlayButton.style.color = 'white';
+overlayButton.style.border = 'none';
+overlayButton.style.borderRadius = '5px';
+overlayButton.style.cursor = 'pointer';
+overlayButton.style.fontSize = '16px';
+
+
+overlayButton.addEventListener('click', () => {
+    console.log("Manual answer triggered.");
+    autoAnswer();
+});
+
+document.querySelectorAll('*').forEach(element => {
+    element.oncopy = null;
+    element.oncut = null;
+    element.onpaste = null;
+    element.style.userSelect = 'text'; // Allow text selection
+    element.style.webkitUserSelect = 'text'; 
+    element.style.msUserSelect = 'text';
+    element.style.mozUserSelect = 'text';
+});
+
+
+document.addEventListener('copy', (event) => {
+    copiedText = window.getSelection().toString();
+    console.log('Text copied:', copiedText);
+});
+
+
+document.body.appendChild(overlayButton);
+
+
+const answerPane = document.createElement('div');
+answerPane.style.position = 'fixed';
+answerPane.style.top = '50px';
+answerPane.style.right = '10px';
+answerPane.style.zIndex = '9999';
+answerPane.style.padding = '15px';
+answerPane.style.backgroundColor = '#f0f0f0';
+answerPane.style.border = '2px solid #007BFF';
+answerPane.style.borderRadius = '8px';
+answerPane.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+answerPane.style.width = '300px';
+answerPane.style.maxHeight = '200px';
+answerPane.style.overflowY = 'auto';
+answerPane.style.fontSize = '14px';
+answerPane.innerHTML = '<strong>Answer:</strong><p id="answerText">No answer yet</p>';
+
+document.body.appendChild(answerPane);
+
+async function queryCohere(question, options, context) {
     const apiKey = 'TCjgtDK841rjCQzTL75LXvk8LujRvRWxpeHkOmL2'; // !!!!!~ YOUR API KEY GOES IN THE "KEY-HERE" SECTION !!!!!!
+    const apiKey = 'TCjgtDK841rjCQzTL75LXvk8LujRvRWxpeHkOmL2'; cohere_xeGSejKgw57zRcNM9pH2A7trIAIcRoQwwzCxyf631U4hOK
+    const response = await fetch('https://api.cohere.ai/generate', {
+        method: 'POST',
+        headers: {; // !!!!!~ YOUR API KEY GOES IN THE "KEY-HERE" SECTION !!!!!!
     const response = await fetch('https://api.cohere.ai/generate', {
         method: 'POST',
         headers: {
